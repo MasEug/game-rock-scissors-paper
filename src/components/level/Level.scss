@@ -1,0 +1,556 @@
+$col-white: #fff;
+$col-black: #000;
+$col-bg-1: hsl(214, 47%, 23%);
+$col-bg-2: hsl(237, 49%, 15%);
+$col-text-dark: hsl(229, 25%, 31%);
+$col-text-score: hsl(229, 64%, 46%);
+$col-head: hsl(217, 16%, 45%);
+
+$col-blue-1: hsl(230, 89%, 62%);
+$col-blue-2: hsl(230, 89%, 65%);
+
+$col-orange-1: hsl(39, 89%, 49%);
+$col-orange-2: hsl(40, 84%, 53%);
+
+$col-red-1: hsl(349, 71%, 52%);
+$col-red-2: hsl(349, 70%, 56%);
+
+$col-blue-s-1: hsl(189, 59%, 53%);
+$col-blue-s-2: hsl(189, 58%, 57%);
+
+$col-fiolet-1: hsl(261, 73%, 60%);
+$col-fiolet-2: hsl(261, 72%, 63%);
+
+$f-weight-normal: 600;
+$f-weight-bold: 700;
+
+
+.game {
+    padding: 18px 15px;
+    width: 100%;
+
+    &__box {
+        margin: 46px auto 0;
+        width: 470px;
+        height: 424px;
+        background-repeat: no-repeat;
+
+        &.triangle {
+            background-position: 85px 91px;
+            background-image: url(/assets/images/bg-triangle.svg);
+
+            .circle {
+                &.scissors {
+                    float: right;
+                    margin-top: 27px;
+                    margin-right: 136px;
+                    animation: 1s linear 0s scissors-tr;
+                }
+                &.paper {
+                    float: right;
+                    animation: 1s linear 0s paper-tr;
+                }
+    
+                &.rock {
+                    float: left;
+                    animation: 1s linear 0s rock-tr;
+                }
+            }
+        }
+
+        &.pentagon {
+            margin: 29px auto 0;
+            background-position: 64px 62px;
+            background-image: url(/assets/images/bg-pentagon.svg);
+
+            .circle {
+                padding-top: 18px;
+                width: 145px;
+                height: 145px;
+
+                &:after {
+                    margin: 0px 18px;
+                    width: 110px;
+                    height: 110px;
+                }
+
+                &:before {
+                    width: 49px;
+                    height: 49px;
+                }
+
+                &.rock:before {
+                    height: 49px;
+                }
+
+                &.paper:before {
+                    height: 60px;
+                }
+
+                &.scissors:before {
+                    height: 58px;
+                }
+
+                &.lizard:before {
+                    height: 47px;
+                }
+
+                &.spock:before {
+                    height: 64px;
+                }
+
+                &.rock {
+                    margin: 0 auto;
+                    animation: 1s linear 0s rock-pent;
+                }
+                &.paper {
+                    float: left;
+                    margin-top: -16px;
+                    animation: 1s linear 0s paper-pent;
+                }
+    
+                &.scissors {
+                    margin-top: -16px;
+                    float: right;
+                    animation: 1s linear 0s scissors-pent;
+                }
+
+                &.lizard {
+                    margin-top: 168px;
+                    margin-left: 63px;
+                    animation: 1s linear 0s lizard-pent;
+                }
+
+                &.spock {
+                    float: right;
+                    margin-top: -146px;
+                    margin-right: 66px;
+                    animation: 1s linear 0s spock-pent;
+                }
+            }
+        }
+    }
+
+    .message {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        animation: 2s linear 0s message;
+
+        &.mob {
+            display: none;
+        }
+
+        button {
+            cursor: pointer;
+            margin-top: 12px;
+            height: 40px;
+            border-radius: 6px;
+            background-color: #fff;
+            text-transform: uppercase;
+            border: none;
+
+            &:hover {
+                color: $col-red-1;
+            }
+
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+
+    .circle {
+        position: relative;
+        cursor: pointer;
+        padding-top: 32px;
+        width: 196px;
+        height: 191px;
+        border-radius: 50%;
+
+        &:after {
+            position: absolute;
+            content: '';
+            margin: 0 25px;
+            width: 145px;
+            height: 138px;
+            border-radius: 50%;
+            background-color: #fff;
+            -webkit-box-shadow: 0px -8px 0px 0px rgba(219,217,218,1);
+            -moz-box-shadow: 0px -8px 0px 0px rgba(219,217,218,1);
+            box-shadow: 0px -8px 0px 0px rgba(219,217,218,1);
+        }
+
+        &:before {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            content: '';
+            transform: translate(-50%,-50%);
+            width: 66px;
+            height: 80px;
+            background-position: center;
+            background-size: cover;
+            z-index: 1;
+        }
+
+        &.scissors:before {
+            height: 75px;
+            background-image: url(/assets/images/icon-scissors.svg);
+        }
+
+        &.paper:before {
+            background-image: url(/assets/images/icon-paper.svg);
+        }
+
+        &.rock:before {
+            height: 66px;
+            background-image: url(/assets/images/icon-rock.svg);
+        }
+
+        &.spock:before {
+            height: 86px;
+            background-image: url(/assets/images/icon-spock.svg);
+        }
+
+        &.lizard:before {
+            height: 62px;
+            background-image: url(/assets/images/icon-lizard.svg);
+        }
+
+        &:active {
+            transition: 1s;
+            transform: scale(1.1);
+        }
+
+        &.scissors {
+            background: linear-gradient(180deg, $col-orange-1 50%, $col-orange-2 100%);
+            -webkit-box-shadow: 0px 8px 0px 0px rgba(199,106,28,1);
+            -moz-box-shadow: 0px 8px 0px 0px rgba(199,106,28,1);
+            box-shadow: 0px 8px 0px 0px rgba(199,106,28,1);
+        }
+
+        &.paper {
+            background: linear-gradient(180deg, $col-blue-1 50%, $col-blue-2 100%);
+            -webkit-box-shadow: 0px 8px 0px 0px rgba(41,69,192,1);
+            -moz-box-shadow: 0px 8px 0px 0px rgba(41,69,192,1);
+            box-shadow: 0px 8px 0px 0px rgba(41,69,192,1);
+        }
+
+        &.rock {
+            background: linear-gradient(180deg, $col-red-1 50%, $col-red-2 100%);
+            -webkit-box-shadow: 0px 8px 0px 0px rgba(156,22,49,1);
+            -moz-box-shadow: 0px 8px 0px 0px rgba(156,22,49,1);
+            box-shadow: 0px 8px 0px 0px rgba(156,22,49,1);
+        }
+
+        &.spock {
+            background: linear-gradient(180deg, $col-blue-s-1 50%, $col-blue-s-2 100%);
+            -webkit-box-shadow: 0px 8px 0px 0px rgba(45,140,170,1);
+            -moz-box-shadow: 0px 8px 0px 0px rgba(45,140,170,1);
+            box-shadow: 0px 8px 0px 0px rgba(45,140,170,1);
+        }
+
+        &.lizard {
+            background: linear-gradient(180deg, $col-fiolet-1 50%, $col-fiolet-2 100%);
+            -webkit-box-shadow: 0px 8px 0px 0px rgba(92,60,159,1);
+            -moz-box-shadow: 0px 8px 0px 0px rgba(92,60,159,1);
+            box-shadow: 0px 8px 0px 0px rgba(92,60,159,1);
+        }
+
+    }
+
+    .field {
+        max-width: 946px;
+        margin: 24px auto 0;
+        display: flex;
+        justify-content: space-between;
+        padding: 31px 0;
+
+        .title {
+            color: $col-white;
+            font-size: 28px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        .message {
+            margin-top: 57px;
+
+            .title {
+                font-size: 56px;
+            }
+            button {
+                margin-top: 18px;
+                font-size: 15px;
+                letter-spacing: 2px;
+                font-weight: $f-weight-bold;
+            }
+        }
+
+        .circle {
+            padding-top: 42px;
+            margin-top: 61px;
+            width: 295px;
+            height: 288px;
+            background-color: #fff;
+            border-radius: 50%;
+
+            &:after {
+                margin: 0 33px;
+                width: 227px;
+                height: 214px;            
+            }
+
+            &:before {
+                width: 108px;
+                height: 108px;
+            }
+
+            &.scissors:before {
+                height: 122px;
+            }
+
+            &.paper:before {
+                height: 130px;
+            }
+
+            &.lizard:before {
+                height: 105px;
+            }
+
+            &.spock:before {
+                height: 138px;
+            }
+
+            &.first {
+                animation: .5s linear 0s first-game;
+            }
+
+            &.second {
+                animation: 1s linear 0s second-game;
+            }
+        }
+    }
+}
+
+@keyframes rock-tr { from { left:78px; opacity: 0.7 } to { left:0; opacity: 1}  }
+
+@keyframes paper-tr { from { right:78px; opacity: 0.7  } to { right:0; opacity: 1}  }
+
+@keyframes scissors-tr { from { top:-78px; opacity: 0.7  } to { top:0; opacity: 1}  }
+
+@keyframes rock-pent { from { top:78px; opacity: 0.7 } to { top:0; opacity: 1}  }
+@keyframes paper-pent { from { left:78px; opacity: 0.7 } to { left:0; opacity: 1}  }
+@keyframes scissors-pent { from { right:78px; opacity: 0.7  } to { right:0; opacity: 1}  }
+@keyframes lizard-pent { from { left:78px; opacity: 0.7 } to { left:0; opacity: 1}  }
+@keyframes spock-pent { from { right:78px; opacity: 0.7  } to { right:0; opacity: 1}  }
+
+@keyframes first-game { 
+    from { top: 50px; opacity: 0 } 
+    to { top: 0;  opacity: 1}  
+}
+
+@keyframes second-game { 
+    0% { opacity: 0; top: 50px }
+    25% {  opacity: 0; top: 50px}
+    50% { opacity: 0;  top: 50px}
+    100% { top: 0;  opacity: 1}  
+  }
+
+  @keyframes message { 
+    0% { opacity: 0;pointer-events: none;}
+    25% {  opacity: 0;}
+    50% { opacity: 0;}
+    100% { opacity: 1; pointer-events: all;}  
+  }
+
+  @media screen and (max-width: 767px) {
+    .game {
+        padding: 18px 0;
+
+        &__box {
+            width: 315px;
+            height: 400px;
+
+            &.triangle {
+                margin-top: 86px;
+                background-position: 60px 60px;
+                background-size: 65%;
+
+                .circle.scissors {
+                    margin-right: 92px;
+                }
+            }
+
+            &.pentagon {
+                width: 315px;
+                margin-top: 67px;
+                background-size: 67%;
+                background-position: 54px 55px;
+
+                .circle {
+                    width: 96px;
+                    height: 96px;
+
+                    &:after {
+                        margin: 0 12px;
+                        width: 73px;
+                        height: 67px;                    
+                    }
+
+                    &:before {
+                        width: 40px;
+                        height: 40px;
+                    }
+
+                    &.rock:before {
+                        height: 40px;
+                    }
+
+                    &.paper:before {
+                        height: 48px;
+                    }
+
+                    &.scissors:before {
+                        height: 46px;
+                    }
+
+                    &.lizard:before {
+                        height: 38px;
+                    }
+
+                    &.spock:before {
+                        height: 50px;
+                    }
+
+                    &.lizard {
+                        margin-top: 114px;
+                        margin-left: 44px;
+                    }
+
+                    &.spock {
+                        margin-top: -95px;
+                        margin-right: 45px;                    
+                    }
+                }
+            }
+
+            .circle {
+                padding-top: 22px;
+                width: 127px;
+                height: 122px;
+
+                &:after {
+                    margin: 0px 13px;
+                    width: 99px;
+                    height: 91px;
+                }
+
+                &:before {
+                    width: 46px;
+                }
+
+                &.rock:before {
+                    height: 46px;
+                }
+
+                &.scissors:before {
+                    height: 52px;
+                }
+
+                &.paper:before {
+                    height: 55px;
+                }
+
+                &.spock:before {
+                    height: 59px;
+                }
+
+                &.lizard:before {
+                    height: 44px;
+                }
+            }
+        }
+
+        .field {
+            margin: 34px auto;
+            padding: 18px 0;
+            justify-content: space-evenly;
+
+            .box {
+                flex-direction: column-reverse;
+                display: flex;
+            }
+
+            .title {
+                margin-top: 34px;
+                font-size: 15px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .message.desc {
+                display: none;
+            }
+
+            .circle {
+                padding-top: 21px;
+                margin-top: 32px;
+                width: 128px;
+                height: 122px;
+
+                &:after {
+                    margin: 0px 12px;
+                    width: 104px;
+                    height: 91px;
+                }
+
+                &:before {
+                    width: 46px;
+                }
+
+                &.rock:before {
+                    height: 46px;
+                }
+
+                &.scissors:before {
+                    height: 52px;
+                }
+
+                &.paper:before {
+                    height: 55px;
+                }
+
+                &.spock:before {
+                    height: 59px;
+                }
+
+                &.lizard:before {
+                    height: 44px;
+                }
+            }
+        }
+
+        .message {
+            &.mob {
+                justify-content: center;
+                display: flex;
+                .title {
+                    margin-top: 21px;
+                    font-size: 51px;
+                    text-transform: uppercase;
+                    color: $col-white;
+                    text-align: center;
+                }
+
+                button {
+                    width: 218px;
+                    margin: 19px auto 40px;
+                }
+            }
+        }
+    }
+  }

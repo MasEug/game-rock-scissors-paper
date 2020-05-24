@@ -1,0 +1,99 @@
+$col-white: #fff;
+$col-black: #000;
+$col-bg-1: hsl(214, 47%, 23%);
+$col-bg-2: hsl(237, 49%, 15%);
+$col-text-dark: hsl(229, 25%, 31%);
+$col-text-score: hsl(229, 64%, 46%);
+$col-head: hsl(217, 16%, 45%);
+
+$col-blue-1: hsl(230, 89%, 62%);
+$col-blue-2: hsl(230, 89%, 65%);
+
+$col-orange-1: hsl(39, 89%, 49%);
+$col-orange-2: hsl(40, 84%, 53%);
+
+$col-red-1: hsl(349, 71%, 52%);
+$col-red-2: hsl(349, 70%, 56%);
+
+$f-weight-normal: 600;
+$f-weight-bold: 700;
+
+
+.header {
+    margin: 0 auto;
+    border: 3px solid $col-head;
+    max-width: 693px;
+    border-radius: 18px;
+
+    &__box {
+        display: flex;
+        justify-content: space-between;
+        padding: 17px 22px 15px 30px;
+
+        .elements {
+            align-self: center;
+            font-size: 39px;
+            line-height: 31px;
+            font-weight: $f-weight-bold;
+            color: $col-white;
+            text-transform: uppercase;
+        }
+
+        .count {
+            align-self: center;
+            padding: 15px;
+            background-color: $col-white;
+            border-radius: 6px;
+            text-align: center;
+            width: 148px;
+            height: 112px;
+
+            .title {
+                font-size: 17px;
+                text-transform: uppercase;
+                color: $col-text-score;
+                letter-spacing: 2px;
+            }
+
+            .numb {
+                font-size: 62px;
+                line-height: 62px;
+                color: $col-text-dark;
+                font-weight: $f-weight-bold;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .header {
+        margin: 0 30px;
+        border: 2px solid #606e85;
+        border-radius: 8px;
+
+        &__box {
+            padding: 11px 11px 11px 23px;
+
+            .elements {
+                font-size: 20px;
+                line-height: 16px;
+            }
+
+            .count {
+                padding: 8px;
+                border-radius: 4px;
+                width: 80px;
+                height: 72px;
+                
+                .title {
+                    font-size: 11px;
+                }
+
+                .numb {
+                    font-size: 43px;
+                    line-height: 42px;
+                }
+            }
+        }
+    }
+}

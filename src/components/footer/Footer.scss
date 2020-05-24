@@ -1,0 +1,41 @@
+.footer {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+
+    &__box {
+        display: flex;
+        flex-direction: column;
+        
+        button {
+            cursor: pointer;
+            padding: 10px 4px 10px 4px;
+            color: #fff;
+            width: 120px;
+            text-transform: uppercase;
+            border: 2px solid #fff;
+            border-radius: 10px;
+            font-size: 15px;
+            background-color: transparent;
+
+            &:nth-child(1) {
+                margin-bottom: 12px;
+            }
+
+            &:hover {
+                background-color: #fff;
+                color: #000;
+            }
+    
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .footer {
+        justify-content: center;
+    }
+}
